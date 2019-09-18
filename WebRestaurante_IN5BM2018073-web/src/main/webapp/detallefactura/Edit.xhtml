@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallefacturaEditDlg" widgetVar="DetallefacturaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetallefacturaTitle}">
+            <h:form id="DetallefacturaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallefacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_iddetallefac}" for="iddetallefac" />
+                        <p:inputText id="iddetallefac" value="#{detallefacturaController.selected.iddetallefac}" title="#{bundle.EditDetallefacturaTitle_iddetallefac}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_iddetallefac}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detallefacturaController.selected.cantidad}" title="#{bundle.EditDetallefacturaTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_precion}" for="precion" />
+                        <p:inputText id="precion" value="#{detallefacturaController.selected.precion}" title="#{bundle.EditDetallefacturaTitle_precion}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_precion}"/>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{detallefacturaController.selected.total}" title="#{bundle.EditDetallefacturaTitle_total}" />
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_idcocinero}" for="idcocinero" />
+                        <p:selectOneMenu id="idcocinero" value="#{detallefacturaController.selected.idcocinero}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_idcocinero}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cocineroController.itemsAvailableSelectOne}"
+                                           var="idcocineroItem"
+                                           itemValue="#{idcocineroItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_idplato}" for="idplato" />
+                        <p:selectOneMenu id="idplato" value="#{detallefacturaController.selected.idplato}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_idplato}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{platoController.itemsAvailableSelectOne}"
+                                           var="idplatoItem"
+                                           itemValue="#{idplatoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetallefacturaLabel_idfactura}" for="idfactura" />
+                        <p:selectOneMenu id="idfactura" value="#{detallefacturaController.selected.idfactura}" required="true" requiredMessage="#{bundle.EditDetallefacturaRequiredMessage_idfactura}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{facturaController.itemsAvailableSelectOne}"
+                                           var="idfacturaItem"
+                                           itemValue="#{idfacturaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detallefacturaController.update}" value="#{bundle.Save}" update="display,:DetallefacturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetallefacturaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetallefacturaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

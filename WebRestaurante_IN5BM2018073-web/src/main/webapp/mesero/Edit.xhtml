@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeseroEditDlg" widgetVar="MeseroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMeseroTitle}">
+            <h:form id="MeseroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{meseroController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMeseroLabel_idmesero}" for="idmesero" />
+                        <p:inputText id="idmesero" value="#{meseroController.selected.idmesero}" title="#{bundle.EditMeseroTitle_idmesero}" required="true" requiredMessage="#{bundle.EditMeseroRequiredMessage_idmesero}"/>
+                        <p:outputLabel value="#{bundle.EditMeseroLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{meseroController.selected.nombre}" title="#{bundle.EditMeseroTitle_nombre}" required="true" requiredMessage="#{bundle.EditMeseroRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditMeseroLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{meseroController.selected.apellido}" title="#{bundle.EditMeseroTitle_apellido}" required="true" requiredMessage="#{bundle.EditMeseroRequiredMessage_apellido}"/>
+                        <p:outputLabel value="#{bundle.EditMeseroLabel_dpi}" for="dpi" />
+                        <p:inputText id="dpi" value="#{meseroController.selected.dpi}" title="#{bundle.EditMeseroTitle_dpi}" required="true" requiredMessage="#{bundle.EditMeseroRequiredMessage_dpi}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{meseroController.update}" value="#{bundle.Save}" update="display,:MeseroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MeseroEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MeseroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

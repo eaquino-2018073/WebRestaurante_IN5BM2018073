@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <style type="text/css">
+            body {
+            background: #1C1C1C;
+            }
+        </style>
+    </h:head>
+    <body>
+        <h:form>  
+    <p:growl id="messages" showDetail="false"/>
+ 
+    <div class="jp"><center><h3 style="margin-top:0">MENU DE SERVICIO</h3></center></div>
+    <fieldset class="enlace">
+        <p:menu>
+        <p:submenu label="Servicio">
+            <p:menuitem value="Clientes" outcome="/cliente/List" update="messages" />
+            <p:menuitem value="Area" outcome="/areas/List" update="messages" />
+            <p:menuitem value="Plato" outcome="/plato/List" update="messages" />
+            <p:menuitem value="Mesero" outcome="/mesero/List" update="messages" />
+            <p:menuitem value="Mesa" outcome="/mesa/List" update="messages" />
+        </p:submenu>
+        <p:submenu label="Factura">
+            <p:menuitem value="Detalles de Factura" outcome="/detallefactura/List" update="messages" />
+            <p:menuitem value="Factura" outcome="/factura/List" update="messages" />
+        </p:submenu>
+        <p:submenu label="Cocinero">
+            <p:menuitem value="Cocinero" outcome="/cocinero/List" update="messages" />
+        </p:submenu>
+    </p:menu>
+    </fieldset>
+        </h:form> 
+    </body>
+    
+    
+
+
+
+
+
+
+
+</html>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeseroViewDlg" widgetVar="MeseroViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMeseroTitle}">
+            <h:form id="MeseroViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{meseroController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMeseroLabel_idmesero}"/>
+                        <h:outputText value="#{meseroController.selected.idmesero}" title="#{bundle.ViewMeseroTitle_idmesero}"/>
+                        <h:outputText value="#{bundle.ViewMeseroLabel_nombre}"/>
+                        <h:outputText value="#{meseroController.selected.nombre}" title="#{bundle.ViewMeseroTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewMeseroLabel_apellido}"/>
+                        <h:outputText value="#{meseroController.selected.apellido}" title="#{bundle.ViewMeseroTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewMeseroLabel_dpi}"/>
+                        <h:outputText value="#{meseroController.selected.dpi}" title="#{bundle.ViewMeseroTitle_dpi}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MeseroViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

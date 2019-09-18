@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeseroCreateDlg" widgetVar="MeseroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMeseroTitle}">
+            <h:form id="MeseroCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{meseroController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMeseroLabel_idmesero}" for="idmesero" />
+                        <p:inputText id="idmesero" value="#{meseroController.selected.idmesero}" title="#{bundle.CreateMeseroTitle_idmesero}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_idmesero}"/>
+                        <p:outputLabel value="#{bundle.CreateMeseroLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{meseroController.selected.nombre}" title="#{bundle.CreateMeseroTitle_nombre}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateMeseroLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{meseroController.selected.apellido}" title="#{bundle.CreateMeseroTitle_apellido}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_apellido}"/>
+                        <p:outputLabel value="#{bundle.CreateMeseroLabel_dpi}" for="dpi" />
+                        <p:inputText id="dpi" value="#{meseroController.selected.dpi}" title="#{bundle.CreateMeseroTitle_dpi}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_dpi}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{meseroController.create}" value="#{bundle.Save}" update="display,:MeseroListForm:datalist,:growl" oncomplete="handleSubmit(args,'MeseroCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MeseroCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
